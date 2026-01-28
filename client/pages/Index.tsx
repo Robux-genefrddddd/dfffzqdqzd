@@ -106,7 +106,7 @@ export default function Index() {
           <LogoLoop
             logos={[
               {
-                src: "https://i.ibb.co/LXyH5Mfm/cover.png",
+                src: "https://i.ibb.co/KppBPM9s/react-1-logo-black-and-white-removebg-preview.png",
                 alt: "React",
                 title: "React",
                 href: "https://react.dev",
