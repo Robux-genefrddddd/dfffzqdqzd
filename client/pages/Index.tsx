@@ -53,33 +53,33 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {/* Feature 1 */}
             <div>
-              <h3 className="font-semibold text-sm mb-2">Scripting</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Optimized Lua patterns and best practices for Roblox development
+              <h3 className="font-bold text-sm mb-3 text-white">Scripting</h3>
+              <p className="text-sm text-white/60 leading-relaxed">
+                Optimized Lua patterns and best practices
               </p>
             </div>
 
             {/* Feature 2 */}
             <div>
-              <h3 className="font-semibold text-sm mb-2">Performance</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Optimization strategies and architecture guidance
+              <h3 className="font-bold text-sm mb-3 text-white">Performance</h3>
+              <p className="text-sm text-white/60 leading-relaxed">
+                Optimization and architecture guidance
               </p>
             </div>
 
             {/* Feature 3 */}
             <div>
-              <h3 className="font-semibold text-sm mb-2">Design</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Game mechanics and system design for scalability
+              <h3 className="font-bold text-sm mb-3 text-white">Design</h3>
+              <p className="text-sm text-white/60 leading-relaxed">
+                Game mechanics and system design
               </p>
             </div>
 
             {/* Feature 4 */}
             <div>
-              <h3 className="font-semibold text-sm mb-2">Support</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Instant answers available whenever you need help
+              <h3 className="font-bold text-sm mb-3 text-white">Support</h3>
+              <p className="text-sm text-white/60 leading-relaxed">
+                Instant answers whenever you need help
               </p>
             </div>
           </div>
