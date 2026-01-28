@@ -292,13 +292,14 @@ export const LogoLoop = memo(
             src={item.src}
             srcSet={item.srcSet}
             sizes={item.sizes}
-            width={item.width}
-            height={item.height}
+            width={item.width || 120}
+            height={item.height || logoHeight}
             alt={item.alt ?? ''}
             title={item.title}
-            loading="lazy"
+            loading="eager"
             decoding="async"
             draggable={false}
+            style={{ aspectRatio: item.width && item.height ? `${item.width}/${item.height}` : 'auto' }}
           />
         );
         const itemAriaLabel = isNodeItem ? (item.ariaLabel ?? item.title) : (item.alt ?? item.title);
