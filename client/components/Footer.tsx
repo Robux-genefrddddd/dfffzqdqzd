@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border/30 bg-background py-12 text-foreground">
+    <footer className="border-t border-border/20 bg-background py-8 text-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main footer content */}
-        <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
           {/* Brand section */}
           <div className="flex flex-col items-start">
-            <div className="text-lg font-bold text-white mb-4">PinIA</div>
-            <p className="text-sm text-white/60 mb-4">
+            <div className="text-sm font-semibold text-white/90 mb-3">PinIA</div>
+            <p className="text-xs text-white/50 mb-3">
               AI assistant for Roblox creators
             </p>
             {/* Roblox logo attribution */}
