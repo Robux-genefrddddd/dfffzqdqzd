@@ -149,7 +149,7 @@ export default function Chat() {
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Message RobloxAI... (Shift + Enter for new line)"
+                placeholder="Message PinIA... (Shift + Enter for new line)"
                 rows={1}
                 className="flex-1 px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                 onKeyDown={(e) => {
@@ -169,7 +169,7 @@ export default function Chat() {
               </button>
             </div>
             <p className="text-xs text-muted-foreground mt-2">
-              RobloxAI can make mistakes. Please verify important information.
+              PinIA can make mistakes. Please verify important information.
             </p>
           </form>
         </div>
