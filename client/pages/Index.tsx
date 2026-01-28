@@ -106,7 +106,7 @@ export default function Index() {
           <LogoLoop
             logos={[
               {
-                src: "https://raw.githubusercontent.com/react-icons/react-icons/master/demo/Fa.js",
+                src: "https://i.ibb.co/LXyH5Mfm/cover.png",
                 alt: "React",
                 title: "React",
                 href: "https://react.dev",
@@ -124,7 +124,7 @@ export default function Index() {
                 href: "https://tailwindcss.com",
               },
               {
-                src: "https://www.svgrepo.com/show/373595/node.svg",
+                src: "https://nodejs.org/static/logos/nodejsHex.svg",
                 alt: "Node.js",
                 title: "Node.js",
                 href: "https://nodejs.org",
