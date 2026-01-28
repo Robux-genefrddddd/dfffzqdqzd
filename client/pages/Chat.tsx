@@ -16,7 +16,7 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hi! I'm RobloxAI, your dedicated assistant for Roblox game development. How can I help you today?",
+      text: "Hi! I'm PinIA, your dedicated assistant for Roblox game development. How can I help you today?",
       sender: "ai",
       timestamp: new Date(),
     },
