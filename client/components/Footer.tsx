@@ -13,11 +13,11 @@ export default function Footer() {
               An advanced AI assistant designed for the Roblox creator community.
             </p>
             {/* Roblox logo attribution */}
-            <div className="flex items-center gap-3 mt-2 p-3 rounded-lg bg-secondary/30 border border-border">
+            <div className="flex items-center gap-3 mt-4">
               <img
                 src="https://i.ibb.co/B531Dsh6/roblox-logo-roblox-symbol-meaning-history-and-evolution-3-removebg-preview.png"
                 alt="Roblox"
-                className="h-6 object-contain"
+                className="h-10 object-contain"
               />
               <p className="text-xs text-muted-foreground">Roblox is a trademark of Roblox Corporation</p>
             </div>
