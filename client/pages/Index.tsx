@@ -89,8 +89,8 @@ export default function Index() {
       {/* Tech Stack Section - minimal */}
       <section className="border-t border-border/30 py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs font-medium text-muted-foreground uppercase tracking-wide mb-12">
-            Built on modern, open-source technology
+          <p className="text-center text-xs font-medium text-white/40 uppercase tracking-widest mb-12">
+            Built with modern technology
           </p>
 
           <LogoLoop
