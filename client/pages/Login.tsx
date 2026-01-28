@@ -26,10 +26,10 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-background flex">
       {/* Login form */}
-      <div className="w-full flex flex-col justify-center px-6 sm:px-8 lg:px-12">
-        <div className="w-full max-w-md mx-auto">
-          {/* Logo for mobile */}
-          <div className="lg:hidden mb-8 text-center">
+      <div className="w-full flex flex-col justify-center items-center px-6 sm:px-8">
+        <div className="w-full max-w-md">
+          {/* Logo */}
+          <div className="mb-8 text-center">
             <div className="text-2xl font-bold gradient-text inline-block">
               RobloxAI
             </div>
