@@ -56,7 +56,7 @@ export default function LogoLoop({
             href={logo.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-shrink-0 flex items-center justify-center p-4 rounded-lg glass hover:glass-dark transition-all duration-300 group"
+            className="flex-shrink-0 flex items-center justify-center transition-all duration-300 group"
             title={logo.title}
           >
             {logo.node ? (
