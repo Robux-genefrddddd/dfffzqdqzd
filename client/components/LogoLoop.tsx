@@ -132,6 +132,8 @@ const useAnimationLoop = (
       const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
       velocityRef.current += (target - velocityRef.current) * easingFactor;
 
+      const seqSize = isVertical ? seqHeightRef.current : seqWidthRef.current;
+
       if (seqSize > 0) {
         offsetRef.current += velocityRef.current * deltaTime;
 
