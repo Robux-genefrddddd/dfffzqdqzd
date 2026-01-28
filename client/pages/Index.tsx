@@ -10,7 +10,7 @@ export default function Index() {
       <nav className="border-b border-border/30 backdrop-blur-md sticky top-0 z-40 bg-background/40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="text-xl font-bold gradient-text">RobloxAI</div>
+            <div className="text-xl font-bold gradient-text">PinIA</div>
           </Link>
           <div className="flex gap-3">
             <Link
