@@ -73,7 +73,7 @@ export default function Footer() {
 
         {/* Bottom section */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-xs text-muted-foreground">
-          <p>© 2024 RobloxAI. All rights reserved.</p>
+          <p>© 2026 RobloxAI. All rights reserved.</p>
           <p className="text-xs leading-relaxed max-w-md">
             <strong>Disclaimer:</strong> This project is not affiliated with or endorsed by Roblox Corporation.
             RobloxAI is an independent AI assistant created for the Roblox creator community.
