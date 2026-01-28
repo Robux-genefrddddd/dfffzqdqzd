@@ -81,6 +81,8 @@ const useAnimationLoop = (
   const isHoveredRef = useRef(isHovered);
   const hoverSpeedRef = useRef(hoverSpeed);
   const targetVelocityRef = useRef(targetVelocity);
+  const seqWidthRef = useRef(seqWidth);
+  const seqHeightRef = useRef(seqHeight);
 
   // Update refs without triggering re-render
   useEffect(() => {
@@ -94,6 +96,11 @@ const useAnimationLoop = (
   useEffect(() => {
     targetVelocityRef.current = targetVelocity;
   }, [targetVelocity]);
+
+  useEffect(() => {
+    seqWidthRef.current = seqWidth;
+    seqHeightRef.current = seqHeight;
+  }, [seqWidth, seqHeight]);
 
   useEffect(() => {
     const track = trackRef.current;
