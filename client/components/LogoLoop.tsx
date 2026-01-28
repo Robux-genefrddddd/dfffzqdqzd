@@ -156,7 +156,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [seqWidth, seqHeight, isVertical, trackRef]);
+  }, [isVertical, trackRef]);
 };
 
 export interface LogoItem {
