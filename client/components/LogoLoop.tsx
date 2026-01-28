@@ -137,12 +137,10 @@ const useAnimationLoop = (
       if (seqSize > 0) {
         offsetRef.current += velocityRef.current * deltaTime;
 
-        // Reset offset every sequence length to keep it within bounds
-        // This creates a seamless infinite loop
-        while (offsetRef.current >= seqSize) {
-          offsetRef.current -= seqSize;
-        }
-        while (offsetRef.current < 0) {
+        // Keep offset within one sequence using modulo for seamless loop
+        // Since DOM has multiple identical copies, resetting at seqSize is invisible
+        offsetRef.current = offsetRef.current % seqSize;
+        if (offsetRef.current < 0) {
           offsetRef.current += seqSize;
         }
 
