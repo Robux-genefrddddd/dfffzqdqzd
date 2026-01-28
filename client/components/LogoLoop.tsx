@@ -137,8 +137,10 @@ const useAnimationLoop = (
       if (seqSize > 0) {
         offsetRef.current += velocityRef.current * deltaTime;
 
-        // Keep offset within bounds without visible jumps using modulo
-        offsetRef.current = ((offsetRef.current % seqSize) + seqSize) % seqSize;
+        // Only reset if offset gets too large (invisible reset far away)
+        if (offsetRef.current > seqSize * 5) {
+          offsetRef.current -= seqSize * 4;
+        }
 
         const transformValue = isVertical
           ? `translate3d(0, ${-offsetRef.current}px, 0)`
