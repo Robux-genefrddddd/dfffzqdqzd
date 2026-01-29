@@ -132,12 +132,44 @@
     @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
   }
 
+  /* Enhanced smooth and rounded buttons */
   .button-primary {
-    @apply px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 font-medium;
+    @apply px-6 py-3 rounded-full bg-gradient-to-r from-primary to-blue-600 text-primary-foreground
+    hover:from-primary/90 hover:to-blue-600/90 hover:shadow-xl hover:shadow-primary/50
+    transition-all duration-300 font-medium
+    active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background;
   }
 
   .button-secondary {
-    @apply px-4 py-2 rounded-lg border border-border hover:bg-secondary/50 text-foreground transition-colors duration-200;
+    @apply px-6 py-3 rounded-full border-2 border-primary/40 text-foreground
+    bg-white/5 hover:bg-white/10 hover:border-primary/70 hover:shadow-lg hover:shadow-primary/20
+    transition-all duration-300 font-medium
+    active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Button with smooth hover effects */
+  .btn-smooth {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full
+    transition-all duration-300 ease-out font-medium
+    hover:translate-y-[-2px] hover:shadow-lg active:translate-y-0 active:shadow-md;
+  }
+
+  .btn-smooth-primary {
+    @apply btn-smooth bg-gradient-to-br from-primary via-blue-500 to-primary
+    text-white hover:shadow-lg hover:shadow-primary/40
+    focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  .btn-smooth-secondary {
+    @apply btn-smooth bg-white/8 border border-white/20 text-white
+    hover:bg-white/15 hover:border-white/40 hover:shadow-lg hover:shadow-white/10
+    focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Link button style */
+  .link-smooth {
+    @apply text-primary hover:text-primary/80 transition-all duration-300
+    focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background rounded-lg;
   }
 }
 
