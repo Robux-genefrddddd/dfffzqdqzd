@@ -26,12 +26,19 @@ export const LogoCarousel = React.memo<LogoCarouselProps>(
   }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
+    const [nextIndex, setNextIndex] = useState(1 % logos.length);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
       if (isHovered || logos.length === 0) return;
 
       const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % logos.length);
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setCurrentIndex((prev) => (prev + 1) % logos.length);
+          setNextIndex((prev) => (prev + 1) % logos.length);
+          setIsTransitioning(false);
+        }, 250);
       }, autoPlayInterval);
 
       return () => clearInterval(interval);
@@ -40,6 +47,15 @@ export const LogoCarousel = React.memo<LogoCarouselProps>(
     if (logos.length === 0) return null;
 
     const currentLogo = logos[currentIndex];
+
+    const handleDotClick = (index: number) => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex(index);
+        setNextIndex((index + 1) % logos.length);
+        setIsTransitioning(false);
+      }, 250);
+    };
 
     return (
       <div
@@ -51,33 +67,17 @@ export const LogoCarousel = React.memo<LogoCarouselProps>(
       >
         {/* Logo Display */}
         <div
-          className="relative h-20 flex items-center justify-center"
+          className="relative flex items-center justify-center transition-opacity duration-300"
           style={{ minHeight: `${logoHeight + 8}px` }}
         >
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 ease-in-out"
-            style={{
-              opacity: currentIndex % 2 === 0 ? 1 : 0,
-            }}
-          >
-            {currentLogo.href ? (
-              <a
-                href={currentLogo.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-flex items-center transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-offset-2"
-                aria-label={currentLogo.title || currentLogo.alt}
-              >
-                <img
-                  src={currentLogo.src}
-                  alt={currentLogo.alt || ""}
-                  title={currentLogo.title}
-                  style={{ height: `${logoHeight}px` }}
-                  className="w-auto object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-            ) : (
+          {currentLogo.href ? (
+            <a
+              href={currentLogo.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-offset-2"
+              aria-label={currentLogo.title || currentLogo.alt}
+            >
               <img
                 src={currentLogo.src}
                 alt={currentLogo.alt || ""}
@@ -87,70 +87,46 @@ export const LogoCarousel = React.memo<LogoCarouselProps>(
                 loading="lazy"
                 decoding="async"
               />
-            )}
-          </div>
-
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 ease-in-out"
-            style={{
-              opacity: currentIndex % 2 === 1 ? 1 : 0,
-            }}
-          >
-            {currentLogo.href ? (
-              <a
-                href={currentLogo.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-flex items-center transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-offset-2"
-                aria-label={currentLogo.title || currentLogo.alt}
-              >
-                <img
-                  src={currentLogo.src}
-                  alt={currentLogo.alt || ""}
-                  title={currentLogo.title}
-                  style={{ height: `${logoHeight}px` }}
-                  className="w-auto object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-            ) : (
-              <img
-                src={currentLogo.src}
-                alt={currentLogo.alt || ""}
-                title={currentLogo.title}
-                style={{ height: `${logoHeight}px` }}
-                className="w-auto object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-          </div>
+            </a>
+          ) : (
+            <img
+              src={currentLogo.src}
+              alt={currentLogo.alt || ""}
+              title={currentLogo.title}
+              style={{ height: `${logoHeight}px` }}
+              className="w-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
         </div>
 
         {/* Logo Title */}
-        <div className="h-6">
+        <div className="h-6 flex items-center justify-center">
           <p className="text-sm text-white/60 transition-opacity duration-300">
             {currentLogo.title || currentLogo.alt}
           </p>
         </div>
 
         {/* Indicators */}
-        <div className="flex gap-2 items-center">
-          {logos.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={cn(
-                "h-1.5 rounded-full transition-all duration-300",
-                index === currentIndex
-                  ? "bg-primary w-8"
-                  : "bg-white/20 w-1.5 hover:bg-white/40"
-              )}
-              aria-label={`Show ${logos[index].title || logos[index].alt}`}
-              aria-current={index === currentIndex ? "true" : "false"}
-            />
-          ))}
-        </div>
+        {logos.length > 1 && (
+          <div className="flex gap-2 items-center">
+            {logos.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={cn(
+                  "h-1.5 rounded-full transition-all duration-300",
+                  index === currentIndex
+                    ? "bg-primary w-8"
+                    : "bg-white/20 w-1.5 hover:bg-white/40"
+                )}
+                aria-label={`Show ${logos[index].title || logos[index].alt}`}
+                aria-current={index === currentIndex ? "true" : "false"}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
