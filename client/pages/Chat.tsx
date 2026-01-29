@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { Send, Menu, X, Sparkles, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
+import Squares from "@/components/Squares";
+import GradualBlur from "@/components/GradualBlur";
 
 interface Message {
   id: string;
@@ -34,13 +36,11 @@ export default function Chat() {
     e.preventDefault();
     if (!input.trim()) return;
 
-    // If not authenticated, show auth prompt
     if (!isAuthenticated) {
       setShowAuthPrompt(true);
       return;
     }
 
-    // Add user message
     const userMessage: Message = {
       id: Math.random().toString(),
       text: input,
@@ -52,11 +52,10 @@ export default function Chat() {
     setInput("");
     setIsLoading(true);
 
-    // Simulate AI response
     setTimeout(() => {
       const aiMessage: Message = {
         id: Math.random().toString(),
-        text: `Thanks for asking about "${input}". This is a simulated response from RobloxAI. In a production environment, this would be connected to an actual AI service to provide expert guidance on Roblox game development.`,
+        text: `Thanks for asking about "${input}". This is a simulated response from PinIA. In a production environment, this would be connected to an actual AI service to provide expert guidance on Roblox game development.`,
         sender: "ai",
         timestamp: new Date(),
       };
@@ -66,24 +65,37 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen bg-black text-white relative overflow-hidden">
+      {/* Animated Background Squares */}
+      <div className="fixed inset-0 z-0 opacity-80">
+        <Squares
+          direction="diagonal"
+          speed={0.5}
+          borderColor="#333"
+          squareSize={50}
+          hoverFillColor="#1a1a2e"
+        />
+      </div>
+
       {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className="relative z-10">
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      </div>
 
       {/* Main chat area */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col relative z-10">
         {/* Header */}
-        <header className="border-b border-border bg-background/80 backdrop-blur-sm py-4 px-4 sm:px-6 flex items-center justify-between">
+        <header className="border-b border-gray-800/30 backdrop-blur-sm py-4 px-4 sm:px-6 flex items-center justify-between bg-black/50">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="lg:hidden p-2 hover:bg-secondary rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-gray-900 rounded-lg transition-colors"
           >
             {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-          <h1 className="text-lg font-semibold text-foreground flex-1 text-center lg:text-left">
+          <h1 className="text-lg font-semibold text-white flex-1 text-center lg:text-left">
             Chat with PinIA
           </h1>
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold text-sm flex-shrink-0">
+          <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-black font-semibold text-sm flex-shrink-0">
             U
           </div>
         </header>
@@ -93,10 +105,10 @@ export default function Chat() {
           {messages.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center">
               <div className="text-5xl mb-4">🤖</div>
-              <h2 className="text-2xl font-semibold text-foreground mb-2">
+              <h2 className="text-2xl font-semibold text-white mb-2">
                 Start a new conversation
               </h2>
-              <p className="text-muted-foreground max-w-md">
+              <p className="text-gray-400 max-w-md">
                 Ask me anything about Roblox game development, scripting,
                 design, monetization, and more.
               </p>
@@ -113,8 +125,8 @@ export default function Chat() {
                   <div
                     className={`max-w-xs sm:max-w-md lg:max-w-2xl px-4 py-3 rounded-lg ${
                       message.sender === "user"
-                        ? "bg-primary text-primary-foreground rounded-br-none"
-                        : "bg-secondary text-foreground rounded-bl-none border border-border"
+                        ? "bg-cyan-600 text-white rounded-br-none"
+                        : "bg-gray-900 text-white rounded-bl-none border border-gray-800"
                     }`}
                   >
                     <p className="text-sm leading-relaxed">{message.text}</p>
@@ -129,11 +141,11 @@ export default function Chat() {
               ))}
               {isLoading && (
                 <div className="flex justify-start animate-fade-in-up">
-                  <div className="bg-secondary text-foreground rounded-lg rounded-bl-none border border-border px-4 py-3">
+                  <div className="bg-gray-900 text-white rounded-lg rounded-bl-none border border-gray-800 px-4 py-3">
                     <div className="flex gap-1">
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce animation-delay-200" />
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce animation-delay-400" />
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" />
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce animation-delay-200" />
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce animation-delay-400" />
                     </div>
                   </div>
                 </div>
@@ -144,7 +156,7 @@ export default function Chat() {
         </div>
 
         {/* Input area */}
-        <div className="border-t border-border bg-background p-4 sm:p-6">
+        <div className="border-t border-gray-800/30 bg-black/50 p-4 sm:p-6 backdrop-blur-sm">
           <form onSubmit={handleSendMessage} className="max-w-4xl mx-auto">
             <div className="flex gap-3">
               <textarea
@@ -152,7 +164,7 @@ export default function Chat() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Message PinIA... (Shift + Enter for new line)"
                 rows={1}
-                className="flex-1 px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                className="flex-1 px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
@@ -163,13 +175,13 @@ export default function Chat() {
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="px-4 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex-shrink-0"
+                className="px-4 py-3 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex-shrink-0"
                 title="Send message (Enter)"
               >
                 <Send size={20} />
               </button>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-gray-500 mt-2">
               PinIA can make mistakes. Please verify important information.
             </p>
           </form>
@@ -179,22 +191,22 @@ export default function Chat() {
       {/* Auth Modal */}
       {showAuthPrompt && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-card border border-border rounded-2xl p-8 max-w-md w-full animate-fade-in-up">
-            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 mb-6">
-              <Sparkles className="text-primary" size={24} />
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 max-w-md w-full animate-fade-in-up">
+            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-cyan-500/10 mb-6">
+              <Sparkles className="text-cyan-400" size={24} />
             </div>
 
-            <h2 className="text-2xl font-semibold text-foreground mb-2">
+            <h2 className="text-2xl font-semibold text-white mb-2">
               Sign in to continue
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-gray-400 mb-8">
               Create an account to start chatting with PinIA.
             </p>
 
             <div className="space-y-3 mb-6">
               <Link
                 to="/register"
-                className="block w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-center font-medium"
+                className="block w-full py-3 px-4 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors text-center font-medium"
               >
                 Create Account
               </Link>
@@ -203,7 +215,7 @@ export default function Chat() {
                   setShowAuthPrompt(false);
                   setIsAuthenticated(true);
                 }}
-                className="block w-full py-3 px-4 border border-border text-foreground rounded-lg hover:bg-secondary/50 transition-colors font-medium"
+                className="block w-full py-3 px-4 border border-gray-800 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
               >
                 Demo (No signup)
               </button>
@@ -211,7 +223,7 @@ export default function Chat() {
 
             <button
               onClick={() => setShowAuthPrompt(false)}
-              className="w-full py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="w-full py-2 text-sm text-gray-400 hover:text-white transition-colors"
             >
               Maybe later
             </button>

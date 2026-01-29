@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, User, Github } from "lucide-react";
+import Squares from "@/components/Squares";
+import GradualBlur from "@/components/GradualBlur";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -36,7 +38,6 @@ export default function Register() {
     }
 
     setIsLoading(true);
-    // Simulate registration
     setTimeout(() => {
       navigate("/chat");
     }, 500);
@@ -48,27 +49,34 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-black text-white flex relative overflow-hidden">
+      {/* Animated Background Squares */}
+      <div className="fixed inset-0 z-0 opacity-80">
+        <Squares
+          direction="diagonal"
+          speed={0.5}
+          borderColor="#333"
+          squareSize={50}
+          hoverFillColor="#1a1a2e"
+        />
+      </div>
+
       {/* Registration form */}
-      <div className="w-full flex flex-col justify-center items-center px-6 sm:px-8">
+      <div className="relative z-10 w-full flex flex-col justify-center items-center px-6 sm:px-8">
         <div className="w-full max-w-md">
           {/* Logo */}
           <div className="mb-8 text-center">
-            <div className="text-2xl font-bold gradient-text inline-block">
+            <Link to="/" className="text-2xl font-bold text-white inline-block">
               PinIA
-            </div>
+            </Link>
           </div>
 
-          <h2 className="text-3xl font-bold text-foreground mb-2">
-            Create account
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Get started with PinIA today
-          </p>
+          <h2 className="text-3xl font-bold text-white mb-2">Create account</h2>
+          <p className="text-gray-400 mb-8">Get started with PinIA today</p>
 
           {/* Error message */}
           {error && (
-            <div className="mb-4 p-3 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive text-sm">
+            <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
               {error}
             </div>
           )}
@@ -79,14 +87,14 @@ export default function Register() {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-sm font-medium text-white mb-2"
               >
                 Full Name
               </label>
               <div className="relative">
                 <User
                   size={18}
-                  className="absolute left-3 top-3 text-muted-foreground"
+                  className="absolute left-3 top-3 text-gray-500"
                 />
                 <input
                   id="name"
@@ -95,7 +103,7 @@ export default function Register() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full pl-10 pr-4 py-2 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                  className="w-full pl-10 pr-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
                   required
                 />
               </div>
@@ -105,14 +113,14 @@ export default function Register() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-sm font-medium text-white mb-2"
               >
                 Email
               </label>
               <div className="relative">
                 <Mail
                   size={18}
-                  className="absolute left-3 top-3 text-muted-foreground"
+                  className="absolute left-3 top-3 text-gray-500"
                 />
                 <input
                   id="email"
@@ -121,7 +129,7 @@ export default function Register() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="you@example.com"
-                  className="w-full pl-10 pr-4 py-2 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                  className="w-full pl-10 pr-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
                   required
                 />
               </div>
@@ -131,14 +139,14 @@ export default function Register() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-sm font-medium text-white mb-2"
               >
                 Password
               </label>
               <div className="relative">
                 <Lock
                   size={18}
-                  className="absolute left-3 top-3 text-muted-foreground"
+                  className="absolute left-3 top-3 text-gray-500"
                 />
                 <input
                   id="password"
@@ -147,11 +155,11 @@ export default function Register() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-2 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                  className="w-full pl-10 pr-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
                   required
                 />
               </div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-xs text-gray-500 mt-1">
                 Must be at least 8 characters
               </p>
             </div>
@@ -160,14 +168,14 @@ export default function Register() {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-sm font-medium text-white mb-2"
               >
                 Confirm Password
               </label>
               <div className="relative">
                 <Lock
                   size={18}
-                  className="absolute left-3 top-3 text-muted-foreground"
+                  className="absolute left-3 top-3 text-gray-500"
                 />
                 <input
                   id="confirmPassword"
@@ -176,7 +184,7 @@ export default function Register() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-2 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                  className="w-full pl-10 pr-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
                   required
                 />
               </div>
@@ -186,16 +194,16 @@ export default function Register() {
             <label className="flex items-start gap-2 cursor-pointer">
               <input
                 type="checkbox"
-                className="w-4 h-4 rounded border-border mt-1"
+                className="w-4 h-4 rounded border-gray-700 bg-gray-900 mt-1"
                 required
               />
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-gray-400">
                 I agree to the{" "}
-                <a href="#" className="text-primary hover:underline">
+                <a href="#" className="text-cyan-400 hover:text-cyan-300">
                   Terms of Service
                 </a>{" "}
                 and{" "}
-                <a href="#" className="text-primary hover:underline">
+                <a href="#" className="text-cyan-400 hover:text-cyan-300">
                   Privacy Policy
                 </a>
               </span>
@@ -205,7 +213,7 @@ export default function Register() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-2 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+              className="w-full py-3 px-4 bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 text-white rounded-lg font-medium hover:border-gray-700 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
             >
               {isLoading ? "Creating account..." : "Create account"}
             </button>
@@ -213,11 +221,9 @@ export default function Register() {
 
           {/* Divider */}
           <div className="my-6 flex items-center gap-4">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-sm text-muted-foreground">
-              Or sign up with
-            </span>
-            <div className="flex-1 h-px bg-border" />
+            <div className="flex-1 h-px bg-gray-800" />
+            <span className="text-sm text-gray-500">Or sign up with</span>
+            <div className="flex-1 h-px bg-gray-800" />
           </div>
 
           {/* OAuth buttons */}
@@ -226,7 +232,7 @@ export default function Register() {
             <button
               type="button"
               onClick={() => handleOAuthRegister("google")}
-              className="w-full py-2 px-4 border border-border rounded-lg font-medium text-foreground hover:bg-secondary/50 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 px-4 border border-gray-800 rounded-lg font-medium text-white hover:bg-gray-900/50 hover:border-gray-700 transition-colors flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path
@@ -253,7 +259,7 @@ export default function Register() {
             <button
               type="button"
               onClick={() => handleOAuthRegister("github")}
-              className="w-full py-2 px-4 border border-border rounded-lg font-medium text-foreground hover:bg-secondary/50 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 px-4 border border-gray-800 rounded-lg font-medium text-white hover:bg-gray-900/50 hover:border-gray-700 transition-colors flex items-center justify-center gap-2"
             >
               <Github size={20} />
               GitHub
@@ -261,17 +267,27 @@ export default function Register() {
           </div>
 
           {/* Sign in link */}
-          <p className="text-center text-sm text-muted-foreground mt-6">
+          <p className="text-center text-sm text-gray-400 mt-6">
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-primary font-medium hover:underline"
+              className="text-cyan-400 font-medium hover:text-cyan-300 transition-colors"
             >
               Sign in
             </Link>
           </p>
         </div>
       </div>
+
+      {/* Bottom Gradient Blur */}
+      <GradualBlur
+        preset="page-footer"
+        position="bottom"
+        height="80px"
+        strength={1.2}
+        curve="ease-out"
+        zIndex={20}
+      />
     </div>
   );
 }
