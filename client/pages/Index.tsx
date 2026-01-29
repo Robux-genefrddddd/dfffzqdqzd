@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import LogoCarousel from "@/components/LogoCarousel";
+import Aurora from "@/components/Aurora";
 import Footer from "@/components/Footer";
 
 export default function Index() {
