@@ -30,12 +30,12 @@ export default function Index() {
             <Link to="/" className="flex items-center gap-2">
               <div className="text-2xl font-bold text-white">PinIA</div>
             </Link>
-            <Link
+            <TransitionLink
               to="/login"
               className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/30 active:scale-95"
             >
               Sign in
-            </Link>
+            </TransitionLink>
           </div>
         </nav>
 
