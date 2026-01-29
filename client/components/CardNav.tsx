@@ -163,9 +163,9 @@ const CardNav: React.FC<CardNavProps> = ({
         className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-2xl shadow-lg shadow-black/30 relative overflow-hidden will-change-[height] backdrop-blur-sm`}
         style={{ backgroundColor: baseColor }}
       >
-        <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-3 pl-[1.1rem] z-[2]">
+        <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between px-3 z-[2]">
           <div
-            className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none`}
+            className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group w-8 h-8 flex flex-col items-center justify-center cursor-pointer gap-1.5 order-2 md:order-none transition-all duration-300`}
             onClick={toggleMenu}
             role="button"
             aria-label={isExpanded ? 'Close menu' : 'Open menu'}
@@ -173,14 +173,19 @@ const CardNav: React.FC<CardNavProps> = ({
             style={{ color: menuColor }}
           >
             <div
-              className={`hamburger-line w-[30px] h-[2.5px] bg-current rounded-full transition-[transform,opacity,margin] duration-300 ease-out [transform-origin:50%_50%] ${
-                isHamburgerOpen ? 'translate-y-[5px] rotate-45' : ''
-              } group-hover:opacity-70`}
+              className={`hamburger-line w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-out [transform-origin:50%_50%] ${
+                isHamburgerOpen ? 'translate-y-2 rotate-45' : ''
+              } group-hover:w-7`}
             />
             <div
-              className={`hamburger-line w-[30px] h-[2.5px] bg-current rounded-full transition-[transform,opacity,margin] duration-300 ease-out [transform-origin:50%_50%] ${
-                isHamburgerOpen ? '-translate-y-[5px] -rotate-45' : ''
-              } group-hover:opacity-70`}
+              className={`hamburger-line w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-out [transform-origin:50%_50%] ${
+                isHamburgerOpen ? 'opacity-0 scale-0' : ''
+              } group-hover:w-7`}
+            />
+            <div
+              className={`hamburger-line w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-out [transform-origin:50%_50%] ${
+                isHamburgerOpen ? '-translate-y-2 -rotate-45' : ''
+              } group-hover:w-7`}
             />
           </div>
 
