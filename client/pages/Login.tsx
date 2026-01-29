@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, Github } from "lucide-react";
 import Squares from "@/components/Squares";
 import GradualBlur from "@/components/GradualBlur";
+import TransitionLink from "@/components/TransitionLink";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -182,12 +183,12 @@ export default function Login() {
           {/* Sign up link */}
           <p className="text-center text-xs text-gray-400 mt-4" style={{ animationDelay: "0.45s" }}>
             Don't have an account?{" "}
-            <Link
+            <TransitionLink
               to="/register"
               className="text-cyan-400 font-medium hover:text-cyan-300 transition-colors duration-300"
             >
               Sign up
-            </Link>
+            </TransitionLink>
           </p>
         </div>
       </div>
