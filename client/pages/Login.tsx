@@ -42,7 +42,10 @@ export default function Login() {
         <div className="w-full max-w-sm space-y-4">
           {/* Logo */}
           <div className="mb-4 text-center" style={{ animationDelay: "0.1s" }}>
-            <Link to="/" className="text-lg font-bold text-white inline-block hover:text-cyan-400 transition-colors duration-300">
+            <Link
+              to="/"
+              className="text-lg font-bold text-white inline-block hover:text-cyan-400 transition-colors duration-300"
+            >
               PinIA
             </Link>
           </div>
@@ -55,7 +58,11 @@ export default function Login() {
           </div>
 
           {/* Login form */}
-          <form onSubmit={handleLogin} className="space-y-4" style={{ animationDelay: "0.25s" }}>
+          <form
+            onSubmit={handleLogin}
+            className="space-y-4"
+            style={{ animationDelay: "0.25s" }}
+          >
             {/* Email input */}
             <div>
               <label
@@ -136,7 +143,10 @@ export default function Login() {
           </form>
 
           {/* Divider */}
-          <div className="my-4 flex items-center gap-4" style={{ animationDelay: "0.35s" }}>
+          <div
+            className="my-4 flex items-center gap-4"
+            style={{ animationDelay: "0.35s" }}
+          >
             <div className="flex-1 h-px bg-gray-800" />
             <span className="text-xs text-gray-500">Or continue with</span>
             <div className="flex-1 h-px bg-gray-800" />
@@ -181,7 +191,10 @@ export default function Login() {
           </div>
 
           {/* Sign up link */}
-          <p className="text-center text-xs text-gray-400 mt-4" style={{ animationDelay: "0.45s" }}>
+          <p
+            className="text-center text-xs text-gray-400 mt-4"
+            style={{ animationDelay: "0.45s" }}
+          >
             Don't have an account?{" "}
             <TransitionLink
               to="/register"

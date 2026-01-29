@@ -23,7 +23,8 @@ export default function PageTransition() {
         <div
           className="fixed inset-0 bg-black pointer-events-none z-50"
           style={{
-            animation: "transitionWipeComplete 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+            animation:
+              "transitionWipeComplete 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
           }}
         />
       )}

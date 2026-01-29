@@ -104,12 +104,17 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Rubik', sans-serif;
+    font-family: "Rubik", sans-serif;
     font-feature-settings: "rounding" 1;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Rubik', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Rubik", sans-serif;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {

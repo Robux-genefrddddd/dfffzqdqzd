@@ -25,14 +25,18 @@ export default function Register() {
     if (/\d/.test(password)) strength++;
     if (/[!@#$%^&*]/.test(password)) strength++;
 
-    if (strength <= 1) return { level: 1, label: "Faible", color: "bg-red-500" };
-    if (strength <= 2) return { level: 2, label: "Moyen", color: "bg-orange-500" };
-    if (strength <= 3) return { level: 3, label: "Bon", color: "bg-yellow-500" };
+    if (strength <= 1)
+      return { level: 1, label: "Faible", color: "bg-red-500" };
+    if (strength <= 2)
+      return { level: 2, label: "Moyen", color: "bg-orange-500" };
+    if (strength <= 3)
+      return { level: 3, label: "Bon", color: "bg-yellow-500" };
     return { level: 4, label: "Très fort", color: "bg-green-500" };
   };
 
   const passwordStrength = getPasswordStrength(formData.password);
-  const passwordsMatch = formData.password && formData.confirmPassword === formData.password;
+  const passwordsMatch =
+    formData.password && formData.confirmPassword === formData.password;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -85,14 +89,21 @@ export default function Register() {
         <div className="w-full max-w-sm">
           {/* Logo */}
           <div className="mb-4 text-center" style={{ animationDelay: "0.1s" }}>
-            <Link to="/" className="text-lg font-bold text-white inline-block hover:text-cyan-400 transition-colors duration-300">
+            <Link
+              to="/"
+              className="text-lg font-bold text-white inline-block hover:text-cyan-400 transition-colors duration-300"
+            >
               PinIA
             </Link>
           </div>
 
           <div style={{ animationDelay: "0.2s" }}>
-            <h2 className="text-2xl font-bold text-white mb-1">Create account</h2>
-            <p className="text-gray-400 mb-4 text-sm">Get started with PinIA today</p>
+            <h2 className="text-2xl font-bold text-white mb-1">
+              Create account
+            </h2>
+            <p className="text-gray-400 mb-4 text-sm">
+              Get started with PinIA today
+            </p>
           </div>
 
           {/* Error message */}
@@ -103,7 +114,11 @@ export default function Register() {
           )}
 
           {/* Registration form */}
-          <form onSubmit={handleRegister} className="space-y-3" style={{ animationDelay: "0.25s" }}>
+          <form
+            onSubmit={handleRegister}
+            className="space-y-3"
+            style={{ animationDelay: "0.25s" }}
+          >
             {/* Name input */}
             <div>
               <label
@@ -195,7 +210,12 @@ export default function Register() {
                     ))}
                   </div>
                   <p className="text-xs text-gray-400">
-                    Force: <span className={`font-medium ${passwordStrength.color.replace('bg-', 'text-')}`}>{passwordStrength.label}</span>
+                    Force:{" "}
+                    <span
+                      className={`font-medium ${passwordStrength.color.replace("bg-", "text-")}`}
+                    >
+                      {passwordStrength.label}
+                    </span>
                   </p>
                 </div>
               )}
@@ -239,7 +259,9 @@ export default function Register() {
                       : "text-red-400 animate-in fade-in slide-in-from-top-2 duration-300"
                   }`}
                 >
-                  {passwordsMatch ? "✓ Les mots de passe correspondent" : "✗ Les mots de passe ne correspondent pas"}
+                  {passwordsMatch
+                    ? "✓ Les mots de passe correspondent"
+                    : "✗ Les mots de passe ne correspondent pas"}
                 </p>
               )}
             </div>
@@ -274,7 +296,10 @@ export default function Register() {
           </form>
 
           {/* Divider */}
-          <div className="my-3 flex items-center gap-4" style={{ animationDelay: "0.35s" }}>
+          <div
+            className="my-3 flex items-center gap-4"
+            style={{ animationDelay: "0.35s" }}
+          >
             <div className="flex-1 h-px bg-gray-800" />
             <span className="text-xs text-gray-500">Or sign up with</span>
             <div className="flex-1 h-px bg-gray-800" />
@@ -321,7 +346,10 @@ export default function Register() {
           </div>
 
           {/* Sign in link */}
-          <p className="text-center text-xs text-gray-400 mt-4" style={{ animationDelay: "0.45s" }}>
+          <p
+            className="text-center text-xs text-gray-400 mt-4"
+            style={{ animationDelay: "0.45s" }}
+          >
             Already have an account?{" "}
             <TransitionLink
               to="/login"
