@@ -2,15 +2,15 @@ export default function AnimatedGrid() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
       {/* Subtle animated grid */}
-      <div 
+      <div
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `
             linear-gradient(0deg, transparent 24%, rgba(0, 212, 255, 0.1) 25%, rgba(0, 212, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.1) 75%, rgba(0, 212, 255, 0.1) 76%, transparent 77%, transparent),
             linear-gradient(90deg, transparent 24%, rgba(0, 212, 255, 0.1) 25%, rgba(0, 212, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.1) 75%, rgba(0, 212, 255, 0.1) 76%, transparent 77%, transparent)
           `,
-          backgroundSize: '50px 50px',
-          animation: 'grid-move 20s linear infinite'
+          backgroundSize: "50px 50px",
+          animation: "grid-move 20s linear infinite",
         }}
       ></div>
 

@@ -44,13 +44,15 @@ export default function Index() {
             {/* Main title */}
             <div className="space-y-4">
               <h1 className="text-hero">
-                AI Assistant<br />
+                AI Assistant
+                <br />
                 <span className="gradient-text">for Roblox Creators</span>
               </h1>
 
               {/* Subtitle */}
               <p className="text-subheader mx-auto max-w-2xl">
-                Create, optimize, and scale your Roblox games with intelligent guidance and best practices.
+                Create, optimize, and scale your Roblox games with intelligent
+                guidance and best practices.
               </p>
             </div>
 
@@ -84,16 +86,29 @@ export default function Index() {
         <section className="border-t border-gray-800/30 py-20 sm:py-28 backdrop-blur-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-bold mb-4">Comprehensive Features</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">Everything you need to create professional Roblox experiences</p>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+                Comprehensive Features
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Everything you need to create professional Roblox experiences
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { title: "Scripting", desc: "Optimized Lua patterns and best practices" },
-                { title: "Performance", desc: "Optimization and architecture guidance" },
+                {
+                  title: "Scripting",
+                  desc: "Optimized Lua patterns and best practices",
+                },
+                {
+                  title: "Performance",
+                  desc: "Optimization and architecture guidance",
+                },
                 { title: "Design", desc: "Game mechanics and system design" },
-                { title: "Support", desc: "Instant answers whenever you need help" },
+                {
+                  title: "Support",
+                  desc: "Instant answers whenever you need help",
+                },
               ].map((feature, i) => (
                 <div
                   key={i}
@@ -116,8 +131,12 @@ export default function Index() {
         <section className="border-t border-gray-800/30 py-20 sm:py-28 backdrop-blur-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-bold mb-4">Built with Modern Tech</h2>
-              <p className="text-gray-400">Industry-leading tools and frameworks</p>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+                Built with Modern Tech
+              </h2>
+              <p className="text-gray-400">
+                Industry-leading tools and frameworks
+              </p>
             </div>
 
             <LogoCarousel
@@ -159,8 +178,12 @@ export default function Index() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center space-y-8 max-w-2xl mx-auto">
               <div>
-                <h2 className="text-4xl sm:text-5xl font-bold mb-4">Ready to Create?</h2>
-                <p className="text-gray-400">Join creators building the next generation of Roblox games</p>
+                <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+                  Ready to Create?
+                </h2>
+                <p className="text-gray-400">
+                  Join creators building the next generation of Roblox games
+                </p>
               </div>
               <GooeyButton as={Link} to="/chat">
                 <StarBorder

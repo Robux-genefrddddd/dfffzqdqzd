@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from "react";
 
 interface GooeyButtonProps {
   children: React.ReactNode;
@@ -8,8 +8,14 @@ interface GooeyButtonProps {
   [key: string]: any;
 }
 
-const GooeyButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, GooeyButtonProps>(
-  ({ children, onClick, className = '', as: Component = 'button', ...props }, ref) => {
+const GooeyButton = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  GooeyButtonProps
+>(
+  (
+    { children, onClick, className = "", as: Component = "button", ...props },
+    ref,
+  ) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const filterRef = useRef<HTMLSpanElement>(null);
 
@@ -17,9 +23,14 @@ const GooeyButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Gooe
     const colors = [1, 2, 3, 1, 2, 3];
 
     const noise = (n = 1) => n / 2 - Math.random() * n;
-    
-    const getXY = (distance: number, pointIndex: number, totalPoints: number): [number, number] => {
-      const angle = ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180);
+
+    const getXY = (
+      distance: number,
+      pointIndex: number,
+      totalPoints: number,
+    ): [number, number] => {
+      const angle =
+        ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180);
       return [distance * Math.cos(angle), distance * Math.sin(angle)];
     };
 
@@ -31,13 +42,14 @@ const GooeyButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Gooe
         time: t,
         scale: 1 + noise(0.2),
         color: colors[Math.floor(Math.random() * colors.length)],
-        rotate: rotate > 0 ? (rotate + 100 / 20) * 10 : (rotate - 100 / 20) * 10
+        rotate:
+          rotate > 0 ? (rotate + 100 / 20) * 10 : (rotate - 100 / 20) * 10,
       };
     };
 
     const makeParticles = () => {
       if (!filterRef.current) return;
-      
+
       const animationTime = 400;
       const timeVariance = 200;
 
@@ -46,19 +58,22 @@ const GooeyButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Gooe
         const p = createParticle(i, t);
 
         setTimeout(() => {
-          const particle = document.createElement('span');
-          const point = document.createElement('span');
-          particle.classList.add('gooey-particle');
-          particle.style.setProperty('--start-x', `${p.start[0]}px`);
-          particle.style.setProperty('--start-y', `${p.start[1]}px`);
-          particle.style.setProperty('--end-x', `${p.end[0]}px`);
-          particle.style.setProperty('--end-y', `${p.end[1]}px`);
-          particle.style.setProperty('--time', `${p.time}ms`);
-          particle.style.setProperty('--scale', `${p.scale}`);
-          particle.style.setProperty('--color', `var(--color-${p.color}, #00d4ff)`);
-          particle.style.setProperty('--rotate', `${p.rotate}deg`);
-          
-          point.classList.add('gooey-point');
+          const particle = document.createElement("span");
+          const point = document.createElement("span");
+          particle.classList.add("gooey-particle");
+          particle.style.setProperty("--start-x", `${p.start[0]}px`);
+          particle.style.setProperty("--start-y", `${p.start[1]}px`);
+          particle.style.setProperty("--end-x", `${p.end[0]}px`);
+          particle.style.setProperty("--end-y", `${p.end[1]}px`);
+          particle.style.setProperty("--time", `${p.time}ms`);
+          particle.style.setProperty("--scale", `${p.scale}`);
+          particle.style.setProperty(
+            "--color",
+            `var(--color-${p.color}, #00d4ff)`,
+          );
+          particle.style.setProperty("--rotate", `${p.rotate}deg`);
+
+          point.classList.add("gooey-point");
           particle.appendChild(point);
           filterRef.current?.appendChild(particle);
 
@@ -71,7 +86,9 @@ const GooeyButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Gooe
       }
     };
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    const handleClick = (
+      e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+    ) => {
       makeParticles();
       if (onClick) {
         onClick(e as React.MouseEvent<HTMLButtonElement>);
@@ -79,7 +96,7 @@ const GooeyButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Gooe
     };
 
     useEffect(() => {
-      const style = document.createElement('style');
+      const style = document.createElement("style");
       style.textContent = `
         :root {
           --color-1: #00d4ff;
@@ -174,9 +191,9 @@ const GooeyButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Gooe
         />
       </div>
     );
-  }
+  },
 );
 
-GooeyButton.displayName = 'GooeyButton';
+GooeyButton.displayName = "GooeyButton";
 
 export default GooeyButton;

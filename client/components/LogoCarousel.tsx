@@ -119,7 +119,7 @@ export const LogoCarousel = React.memo<LogoCarouselProps>(
                   "h-1.5 rounded-full transition-all duration-300",
                   index === currentIndex
                     ? "bg-primary w-8"
-                    : "bg-white/20 w-1.5 hover:bg-white/40"
+                    : "bg-white/20 w-1.5 hover:bg-white/40",
                 )}
                 aria-label={`Show ${logos[index].title || logos[index].alt}`}
                 aria-current={index === currentIndex ? "true" : "false"}
@@ -129,7 +129,7 @@ export const LogoCarousel = React.memo<LogoCarouselProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 LogoCarousel.displayName = "LogoCarousel";

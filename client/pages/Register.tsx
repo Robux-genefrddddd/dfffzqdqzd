@@ -71,12 +71,8 @@ export default function Register() {
             </Link>
           </div>
 
-          <h2 className="text-3xl font-bold text-white mb-2">
-            Create account
-          </h2>
-          <p className="text-gray-400 mb-8">
-            Get started with PinIA today
-          </p>
+          <h2 className="text-3xl font-bold text-white mb-2">Create account</h2>
+          <p className="text-gray-400 mb-8">Get started with PinIA today</p>
 
           {/* Error message */}
           {error && (
@@ -226,9 +222,7 @@ export default function Register() {
           {/* Divider */}
           <div className="my-6 flex items-center gap-4">
             <div className="flex-1 h-px bg-gray-800" />
-            <span className="text-sm text-gray-500">
-              Or sign up with
-            </span>
+            <span className="text-sm text-gray-500">Or sign up with</span>
             <div className="flex-1 h-px bg-gray-800" />
           </div>
 

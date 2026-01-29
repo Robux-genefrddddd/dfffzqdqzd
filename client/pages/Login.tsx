@@ -114,7 +114,10 @@ export default function Login() {
                   Remember me
                 </span>
               </label>
-              <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+              <a
+                href="#"
+                className="text-cyan-400 hover:text-cyan-300 transition-colors"
+              >
                 Forgot password?
               </a>
             </div>
@@ -132,9 +135,7 @@ export default function Login() {
           {/* Divider */}
           <div className="my-6 flex items-center gap-4">
             <div className="flex-1 h-px bg-gray-800" />
-            <span className="text-sm text-gray-500">
-              Or continue with
-            </span>
+            <span className="text-sm text-gray-500">Or continue with</span>
             <div className="flex-1 h-px bg-gray-800" />
           </div>
 

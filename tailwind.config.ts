@@ -118,7 +118,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in-up": "fade-in-up 0.3s ease-out",
         "slide-in-right": "slide-in-right 0.3s ease-out",
-        "star-movement-bottom": "star-movement-bottom linear infinite alternate",
+        "star-movement-bottom":
+          "star-movement-bottom linear infinite alternate",
         "star-movement-top": "star-movement-top linear infinite alternate",
         "grid-move": "grid-move 20s linear infinite",
       },
