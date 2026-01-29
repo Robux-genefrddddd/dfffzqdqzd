@@ -31,7 +31,7 @@ export default function Index() {
             </Link>
             <Link
               to="/login"
-              className="text-sm text-gray-400 hover:text-white transition-colors duration-300"
+              className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/30 active:scale-95"
             >
               Sign in
             </Link>
