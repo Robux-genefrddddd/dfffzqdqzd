@@ -63,7 +63,7 @@ export default function Register() {
 
       {/* Registration form */}
       <div className="relative z-10 w-full flex flex-col justify-center items-center px-6 sm:px-8">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-sm">
           {/* Logo */}
           <div className="mb-4 text-center">
             <Link to="/" className="text-lg font-bold text-white inline-block">
