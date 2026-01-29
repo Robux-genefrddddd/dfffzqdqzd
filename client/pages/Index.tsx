@@ -2,14 +2,22 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import StarBorder from "@/components/StarBorder";
 import LogoCarousel from "@/components/LogoCarousel";
-import AnimatedGrid from "@/components/AnimatedGrid";
+import Squares from "@/components/Squares";
 import Footer from "@/components/Footer";
 
 export default function Index() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col relative overflow-hidden">
-      {/* Animated Background Grid */}
-      <AnimatedGrid />
+      {/* Animated Background Squares */}
+      <div className="fixed inset-0 z-0 opacity-80">
+        <Squares
+          direction="diagonal"
+          speed={0.5}
+          borderColor="#333"
+          squareSize={50}
+          hoverFillColor="#1a1a2e"
+        />
+      </div>
 
       {/* Content wrapper */}
       <div className="relative z-10 flex flex-col flex-1">
@@ -17,7 +25,7 @@ export default function Index() {
         <nav className="border-b border-gray-800/30 backdrop-blur-sm sticky top-0 z-40 bg-black/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2">
-              <div className="text-2xl font-bold gradient-text">PinIA</div>
+              <div className="text-2xl font-bold text-white">PinIA</div>
             </Link>
             <Link
               to="/login"
