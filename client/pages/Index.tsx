@@ -7,7 +7,7 @@ import {
   Code2,
   Sparkles,
 } from "lucide-react";
-import LogoLoop from "@/components/LogoLoop";
+import LogoCarousel from "@/components/LogoCarousel";
 import Footer from "@/components/Footer";
 
 export default function Index() {
