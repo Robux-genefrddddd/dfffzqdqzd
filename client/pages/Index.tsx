@@ -46,7 +46,7 @@ export default function Index() {
               <h1 className="text-hero">
                 AI Assistant
                 <br />
-                <span className="gradient-text">for Roblox Creators</span>
+                <span className="gradient-text">FOR Roblox Creators</span>
               </h1>
 
               {/* Subtitle */}

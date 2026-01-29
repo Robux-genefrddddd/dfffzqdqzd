@@ -1,6 +1,6 @@
 /** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -105,12 +105,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Geist', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-feature-settings: "rounding" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
