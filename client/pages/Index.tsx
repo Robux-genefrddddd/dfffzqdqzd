@@ -178,8 +178,8 @@ export default function Index() {
       <GradualBlur
         preset="page-footer"
         position="bottom"
-        height="120px"
-        strength={3}
+        height="80px"
+        strength={1.2}
         curve="ease-out"
         zIndex={20}
       />
