@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import LogoCarousel from "@/components/LogoCarousel";
 import Aurora from "@/components/Aurora";
+import CardNav from "@/components/CardNav";
 import Footer from "@/components/Footer";
 
 export default function Index() {
