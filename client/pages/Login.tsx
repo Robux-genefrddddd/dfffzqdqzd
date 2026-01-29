@@ -54,7 +54,7 @@ export default function Login() {
           </div>
 
           {/* Login form */}
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4" style={{ animationDelay: "0.25s" }}>
             {/* Email input */}
             <div>
               <label
@@ -180,11 +180,11 @@ export default function Login() {
           </div>
 
           {/* Sign up link */}
-          <p className="text-center text-xs text-gray-400 mt-4">
+          <p className="text-center text-xs text-gray-400 mt-4" style={{ animationDelay: "0.45s" }}>
             Don't have an account?{" "}
             <Link
               to="/register"
-              className="text-cyan-400 font-medium hover:text-cyan-300 transition-colors"
+              className="text-cyan-400 font-medium hover:text-cyan-300 transition-colors duration-300"
             >
               Sign up
             </Link>
