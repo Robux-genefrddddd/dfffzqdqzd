@@ -111,7 +111,7 @@ export default function Index() {
             Built with modern technology
           </p>
 
-          <LogoLoop
+          <LogoCarousel
             logos={[
               {
                 src: "https://i.ibb.co/KppBPM9s/react-1-logo-black-and-white-removebg-preview.png",
@@ -138,12 +138,8 @@ export default function Index() {
                 href: "https://nodejs.org",
               },
             ]}
-            direction="left"
-            speed={60}
             logoHeight={56}
-            gap={40}
-            pauseOnHover
-            scaleOnHover
+            autoPlayInterval={3000}
             ariaLabel="Technology stack"
           />
         </div>
