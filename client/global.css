@@ -265,27 +265,25 @@
   }
 }
 
-@keyframes transitionWipeLeft {
+@keyframes transitionWipeIn {
   0% {
-    clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
-  }
-  50% {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transform: translateX(100%);
+    opacity: 1;
   }
   100% {
-    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+    transform: translateX(0%);
+    opacity: 1;
   }
 }
 
-@keyframes transitionWipeRight {
+@keyframes transitionWipeOut {
   0% {
-    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
-  }
-  50% {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transform: translateX(0%);
+    opacity: 1;
   }
   100% {
-    clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+    transform: translateX(-100%);
+    opacity: 1;
   }
 }
 
