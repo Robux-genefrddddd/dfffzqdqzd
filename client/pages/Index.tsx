@@ -183,6 +183,16 @@ export default function Index() {
         {/* Footer */}
         <Footer />
       </div>
+
+      {/* Bottom Gradient Blur Fade */}
+      <GradualBlur
+        preset="page-footer"
+        position="bottom"
+        height="120px"
+        strength={3}
+        curve="ease-out"
+        zIndex={20}
+      />
     </div>
   );
 }
