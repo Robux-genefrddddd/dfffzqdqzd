@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Mail, Lock, User, Github } from "lucide-react";
+import { Mail, Lock, User, Github, Check } from "lucide-react";
 import Squares from "@/components/Squares";
 import GradualBlur from "@/components/GradualBlur";
 
@@ -14,6 +14,24 @@ export default function Register() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const getPasswordStrength = (password: string) => {
+    if (!password) return { level: 0, label: "", color: "" };
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (password.length >= 12) strength++;
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[!@#$%^&*]/.test(password)) strength++;
+
+    if (strength <= 1) return { level: 1, label: "Faible", color: "bg-red-500" };
+    if (strength <= 2) return { level: 2, label: "Moyen", color: "bg-orange-500" };
+    if (strength <= 3) return { level: 3, label: "Bon", color: "bg-yellow-500" };
+    return { level: 4, label: "Très fort", color: "bg-green-500" };
+  };
+
+  const passwordStrength = getPasswordStrength(formData.password);
+  const passwordsMatch = formData.password && formData.confirmPassword === formData.password;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -91,10 +109,10 @@ export default function Register() {
               >
                 Full Name
               </label>
-              <div className="relative">
+              <div className="relative group">
                 <User
                   size={16}
-                  className="absolute left-3 top-2.5 text-gray-500"
+                  className="absolute left-3 top-2.5 text-gray-500 group-focus-within:text-cyan-400 transition-colors duration-300"
                 />
                 <input
                   id="name"
@@ -103,7 +121,7 @@ export default function Register() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full pl-10 pr-4 py-1.5 text-sm bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
+                  className="w-full pl-10 pr-4 py-1.5 text-sm bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 hover:border-gray-700 transition-all duration-300"
                   required
                 />
               </div>
@@ -117,10 +135,10 @@ export default function Register() {
               >
                 Email
               </label>
-              <div className="relative">
+              <div className="relative group">
                 <Mail
                   size={16}
-                  className="absolute left-3 top-2.5 text-gray-500"
+                  className="absolute left-3 top-2.5 text-gray-500 group-focus-within:text-cyan-400 transition-colors duration-300"
                 />
                 <input
                   id="email"
@@ -129,7 +147,7 @@ export default function Register() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="you@example.com"
-                  className="w-full pl-10 pr-4 py-1.5 text-sm bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
+                  className="w-full pl-10 pr-4 py-1.5 text-sm bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 hover:border-gray-700 transition-all duration-300"
                   required
                 />
               </div>
@@ -143,10 +161,10 @@ export default function Register() {
               >
                 Password
               </label>
-              <div className="relative">
+              <div className="relative group">
                 <Lock
                   size={16}
-                  className="absolute left-3 top-2.5 text-gray-500"
+                  className="absolute left-3 top-2.5 text-gray-500 group-focus-within:text-cyan-400 transition-colors duration-300"
                 />
                 <input
                   id="password"
@@ -155,13 +173,29 @@ export default function Register() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-1.5 text-sm bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
+                  className="w-full pl-10 pr-4 py-1.5 text-sm bg-gray-900 border border-gray-800 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 hover:border-gray-700 transition-all duration-300"
                   required
                 />
               </div>
-              <p className="text-xs text-gray-500 mt-0.5">
-                Min 8 characters
-              </p>
+              {formData.password && (
+                <div className="mt-1 space-y-1 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="flex gap-1">
+                    {[0, 1, 2, 3].map((i) => (
+                      <div
+                        key={i}
+                        className={`h-1 flex-1 rounded-full transition-all duration-500 ${
+                          i < passwordStrength.level
+                            ? passwordStrength.color
+                            : "bg-gray-700"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400">
+                    Force: <span className={`font-medium ${passwordStrength.color.replace('bg-', 'text-')}`}>{passwordStrength.label}</span>
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Confirm password input */}
@@ -213,7 +247,7 @@ export default function Register() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-2 px-4 text-sm bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 text-white rounded-lg font-medium hover:border-gray-700 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+              className="w-full py-2 px-4 text-sm bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 text-white rounded-lg font-medium hover:border-cyan-500 hover:shadow-lg hover:shadow-cyan-500/30 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 mt-2"
             >
               {isLoading ? "Creating..." : "Create account"}
             </button>
@@ -232,7 +266,7 @@ export default function Register() {
             <button
               type="button"
               onClick={() => handleOAuthRegister("google")}
-              className="w-full py-2 px-4 text-sm border border-gray-800 rounded-lg font-medium text-white hover:bg-gray-900/50 hover:border-gray-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-2 px-4 text-sm border border-gray-800 rounded-lg font-medium text-white hover:bg-gray-900/50 hover:border-gray-700 hover:shadow-lg hover:shadow-blue-500/10 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path
@@ -259,7 +293,7 @@ export default function Register() {
             <button
               type="button"
               onClick={() => handleOAuthRegister("github")}
-              className="w-full py-2 px-4 text-sm border border-gray-800 rounded-lg font-medium text-white hover:bg-gray-900/50 hover:border-gray-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-2 px-4 text-sm border border-gray-800 rounded-lg font-medium text-white hover:bg-gray-900/50 hover:border-gray-700 hover:shadow-lg hover:shadow-gray-500/10 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <Github size={16} />
               GitHub
